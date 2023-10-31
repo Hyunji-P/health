@@ -1,1 +1,22 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/health
+    username: health
+    password: s&53sxR$#sR]M|Zs
+    driver-class-name: org.postgresql.Driver
 
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
+logging.level:
+  org.hibernate.SQL: debug
+#  org.hibernate.type: trace
