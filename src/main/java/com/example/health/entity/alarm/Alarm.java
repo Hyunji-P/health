@@ -1,8 +1,7 @@
-package com.example.health.entity;
+package com.example.health.entity.alarm;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -1,5 +1,9 @@
 package com.example.health.entity;
 
+import com.example.health.entity.alarm.Alarm;
+import com.example.health.entity.alarm.AmPmType;
+import com.example.health.entity.alarm.Period;
+import com.example.health.entity.alarm.Schedule;
 import com.example.health.repository.command.AlarmCommandRepository;
 import com.example.health.repository.query.AlarmQueryRepository;
 import jakarta.persistence.EntityManager;
@@ -9,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -18,7 +21,6 @@ import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
