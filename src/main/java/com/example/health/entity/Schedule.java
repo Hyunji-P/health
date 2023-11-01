@@ -1,7 +1,5 @@
 package com.example.health.entity;
 
-import com.example.health.entity.converter.AmPmConverter;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
