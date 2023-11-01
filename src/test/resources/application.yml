@@ -1,11 +1,12 @@
 spring:
   profiles:
-    active: local
+    active: test
   datasource:
-    url: jdbc:postgresql://localhost:5432/health
-    username: health
-    password: health1234
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
