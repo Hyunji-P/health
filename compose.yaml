@@ -3,7 +3,7 @@ services:
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=health'
-      - 'POSTGRES_PASSWORD=s&53sxR$#sR]M|Zs'
+      - 'POSTGRES_PASSWORD=health1234'
       - 'POSTGRES_USER=health'
     ports:
       - '5432'
