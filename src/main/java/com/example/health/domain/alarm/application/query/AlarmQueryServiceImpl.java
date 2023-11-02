@@ -1,6 +1,7 @@
 package com.example.health.domain.alarm.application.query;
 
 import com.example.health.domain.alarm.domain.Alarm;
+import com.example.health.domain.alarm.dto.AlarmDto;
 import com.example.health.domain.alarm.repository.query.AlarmQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class AlarmQueryServiceImpl implements AlarmQueryService{
     private final AlarmQueryRepository alarmQueryRepository;
 
     @Override
-    public List<Alarm> findAll() {
-        return alarmQueryRepository.findAll();
+    public List<AlarmDto> findAll() {
+        return alarmQueryRepository.findAllAlarm();
     }
 }
