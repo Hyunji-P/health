@@ -1,6 +1,6 @@
-package com.example.health.entity.recode.body;
+package com.example.health.domain.recode.body;
 
-import com.example.health.entity.BaseTimeEntity;
+import com.example.health.global.common.BaseTimeEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

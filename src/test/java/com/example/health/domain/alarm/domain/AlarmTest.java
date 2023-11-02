@@ -1,11 +1,7 @@
-package com.example.health.entity;
+package com.example.health.domain.alarm.domain;
 
-import com.example.health.entity.alarm.Alarm;
-import com.example.health.entity.alarm.AmPmType;
-import com.example.health.entity.alarm.Period;
-import com.example.health.entity.alarm.Schedule;
-import com.example.health.repository.command.AlarmCommandRepository;
-import com.example.health.repository.query.AlarmQueryRepository;
+import com.example.health.domain.alarm.repository.command.AlarmCommandRepository;
+import com.example.health.domain.alarm.repository.query.AlarmQueryRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +17,7 @@ import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -52,7 +49,7 @@ class AlarmTest {
         // when
         alarmCommandRepository.save(alarm);
     }
-    
+
     @Test
     @DisplayName("알람 전체 조회")
     void 알람_조회_findAll() throws Exception{
@@ -71,7 +68,7 @@ class AlarmTest {
                 new Schedule(AmPmType.PM, 12, 00),
                 new Schedule(AmPmType.PM, 20, 20));
     }
-    
+
     @Test
     @DisplayName("알람 단건 조회")
     void 알람_조회_findOne() throws Exception{
@@ -88,8 +85,8 @@ class AlarmTest {
                 new Schedule(AmPmType.PM, 12, 00),
                 new Schedule(AmPmType.PM, 20, 20));
     }
-    
-    
+
+
     @Test
     @DisplayName("알람 업데이트")
     void 알람_업데이트() throws Exception{
@@ -102,14 +99,14 @@ class AlarmTest {
 
         // when
         Alarm updatedAlarm = alarmQueryRepository.findByName("테스트 알람 업데이트").get();
-        
+
         // then
         assertThat(updatedAlarm.getName()).isEqualTo("테스트 알람 업데이트");
     }
-    
+
     @Test
     @DisplayName("알람 삭제")
-    void AlarmTest() throws Exception{
+    void 알람_삭제() throws Exception{
         // given
         Alarm findAlarm = alarmQueryRepository.findByName("테스트 알람").get();
 
@@ -122,5 +119,5 @@ class AlarmTest {
         }).isInstanceOf(NoSuchElementException.class)
                 .hasMessage("No value present");
     }
-    
+
 }

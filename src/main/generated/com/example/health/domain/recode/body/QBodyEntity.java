@@ -1,4 +1,4 @@
-package com.example.health.entity.recode.body;
+package com.example.health.domain.recode.body;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QBodyEntity extends EntityPathBase<BodyEntity> {
 
-    private static final long serialVersionUID = 615364717L;
+    private static final long serialVersionUID = -905422228L;
 
     public static final QBodyEntity bodyEntity = new QBodyEntity("bodyEntity");
 

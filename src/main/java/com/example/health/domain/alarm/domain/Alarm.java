@@ -1,6 +1,6 @@
-package com.example.health.entity.alarm;
+package com.example.health.domain.alarm.domain;
 
-import com.example.health.entity.BaseTimeEntity;
+import com.example.health.global.common.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.health.entity;
+package com.example.health.global.common;
 
 import jakarta.persistence.Column;
 import org.springframework.data.annotation.CreatedBy;

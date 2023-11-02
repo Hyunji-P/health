@@ -1,6 +1,6 @@
-package com.example.health.repository.query;
+package com.example.health.domain.alarm.repository.query;
 
-import com.example.health.entity.alarm.Alarm;
+import com.example.health.domain.alarm.domain.Alarm;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.health.entity.alarm;
+package com.example.health.domain.alarm.domain;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;

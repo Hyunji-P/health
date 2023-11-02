@@ -1,4 +1,4 @@
-package com.example.health.entity.alarm;
+package com.example.health.domain.alarm.domain;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,7 +16,7 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QAlarm extends EntityPathBase<Alarm> {
 
-    private static final long serialVersionUID = 1479358186L;
+    private static final long serialVersionUID = -1865784531L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 

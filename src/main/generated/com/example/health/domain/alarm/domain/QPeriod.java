@@ -1,4 +1,4 @@
-package com.example.health.entity.alarm;
+package com.example.health.domain.alarm.domain;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEmbeddableSerializer")
 public class QPeriod extends BeanPath<Period> {
 
-    private static final long serialVersionUID = -961065912L;
+    private static final long serialVersionUID = -1581275035L;
 
     public static final QPeriod period = new QPeriod("period");
 
