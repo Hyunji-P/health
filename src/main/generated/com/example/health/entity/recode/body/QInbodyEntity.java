@@ -2,6 +2,7 @@ package com.example.health.entity.recode.body;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
+import com.example.health.domain.recode.body.BodyEntity;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;
