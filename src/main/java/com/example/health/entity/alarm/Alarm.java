@@ -1,8 +1,8 @@
-package com.example.health.entity;
+package com.example.health.entity.alarm;
 
+import com.example.health.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Alarm {
+public class Alarm extends BaseTimeEntity {
     @Id
     @GeneratedValue
     private Long id;

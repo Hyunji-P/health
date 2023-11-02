@@ -1,6 +1,6 @@
 package com.example.health.repository.query;
 
-import com.example.health.entity.Alarm;
+import com.example.health.entity.alarm.Alarm;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

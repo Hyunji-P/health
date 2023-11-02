@@ -1,4 +1,4 @@
-package com.example.health.entity;
+package com.example.health.entity.alarm;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

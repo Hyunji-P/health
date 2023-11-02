@@ -1,4 +1,4 @@
-package com.example.health.entity;
+package com.example.health.entity.alarm;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEmbeddableSerializer")
 public class QSchedule extends BeanPath<Schedule> {
 
-    private static final long serialVersionUID = 1051289569L;
+    private static final long serialVersionUID = -1298209954L;
 
     public static final QSchedule schedule = new QSchedule("schedule");
 
