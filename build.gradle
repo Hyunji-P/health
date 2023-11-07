@@ -57,6 +57,7 @@ dependencies {
 	// swagger 자동변환 open api
 	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.7.0'
+	testImplementation 'com.epages:restdocs-api-spec-mockmvc:0.15.3'
 
 }
 
