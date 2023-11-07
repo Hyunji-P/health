@@ -14,14 +14,18 @@ java {
 }
 
 configurations {
-	asciidoctorExt // (2)
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	asciidoctorExt // (2)
 }
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+	snippetsDir = file('build/generated-snippets') // (5) snippets 파일이 저장될 경로 설정
 }
 
 dependencies {
@@ -48,30 +52,35 @@ dependencies {
 	// spring rest docs
 	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor' // (3) adoc 파일에서 사용할 snippets 속성이 자동으로 build/generated-snippets를 가르키도록 함
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc' // (4) MockMvc 테스트
+	testImplementation 'com.epages:restdocs-api-spec:0.19.0'
 
 	// swagger 자동변환 open api
-	testImplementation('com.epages:restdocs-api-spec-mockmvc:0.18.2')
-}
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.7.0'
 
-ext {
-	snippetsDir = file('build/generated-snippets') // (5) snippets 파일이 저장될 경로 설정
 }
-
 
 tasks.named('test') {
-	useJUnitPlatform()
 	outputs.dir snippetsDir // (6) 출력할 디렉토리 설정
+	useJUnitPlatform()
 }
 
-asciidoctor {
-	configurations 'asciidoctorExt' // (7) asciidoctor에서 asciidoctorExt을 configurations로 사용하도록 설정
-	baseDirFollowsSourceFile() // (8) .adoc 파일에서는 다른 .adoc 파일을 include하여 사용할 수 있는데 그럴 경우 경로를 동일하게 baseDir로 설정
+tasks.register("restDocsTest", Test) {
+	outputs.dir snippetsDir
+	useJUnitPlatform {
+		includeTags("restDocs")
+	}
+
+	finalizedBy "asciidoctor"
+	finalizedBy "openapi3"
+}
+
+tasks.named("asciidoctor") {
+	dependsOn restDocsTest // (10) build 시 restDocsTest 후 asciidoctor를 진행하도록 설정
+
 	inputs.dir snippetsDir // (9) input 디렉토리를 설정
-	dependsOn test // (10) build 시 test 후 asciidoctor를 진행하도록 설정
-}
-
-asciidoctor.doFirst {
-	delete file('src/main/resources/static/docs') // (11) 중복을 막기 위해 새로운 문서를 생성할 때에는 전에 생성했던 문서들을 먼저 지워줌
+	configurations 'asciidoctorExt' // (7) asciidoctor에서 asciidoctorExt을 configurations로 사용하도록 설정
+	baseDirFollowsSourceDir() // (8) .adoc 파일에서는 다른 .adoc 파일을 include하여 사용할 수 있는데 그럴 경우 경로를 동일하게 baseDir로 설정
 }
 
 task copyDocument(type: Copy) { // (12) 디렉토리에 생성된 html 문서 복사
@@ -80,14 +89,34 @@ task copyDocument(type: Copy) { // (12) 디렉토리에 생성된 html 문서 �
 	into file("src/main/resources/static/docs")
 }
 
-build {
-	dependsOn copyDocument // (13) copyDocument 후 build 지정
-}
-
 openapi3 {
-	server = 'https://localhost:8080'
+	servers = [
+			{ url = 'http://localhost:8080' },
+	]
 	title = 'RestDocs to Swagger 변환 테스트(변경 예정)'
 	description = 'Spring rest docs convertor'
 	version = '0.1.0'
 	format = 'yaml'
+}
+
+tasks.register("apiBuild", GradleBuild) {
+	tasks = ["clean", "restDocsTest", "build"]
+}
+
+springBoot {
+	buildInfo()
+}
+
+bootJar {
+	from("swagger-ui") {
+		into "BOOT-INF/classes/static/swagger"
+	}
+	from("${asciidoctor.outputDir}") {
+		into "BOOT-INF/classes/static/docs"
+	}
+	from("build/api-spec") {
+		into "BOOT-INF/classes/static/swagger"
+	}
+
+	archiveFileName.set "application.jar"
 }
